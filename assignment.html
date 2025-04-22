@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lit Vibes - Discover Trends</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Arial', sans-serif;
+      }
+
+      body {
+        background-color: #000;
+        color: #fff;
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Hero Section */
+      .hero {
+        position: relative;
+        height: 500px;
+        background-image: url('/api/placeholder/800/500');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding-left: 50px;
+        text-align: left;
+      }
+
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
+        z-index: 1;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 500px;
+      }
+
+      .logo {
+        color: #ff4d79;
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+      }
+
+      .logo::before {
+        content: "";
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background-color: #ff4d79;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+
+      .stylish {
+        color: #ff4d79;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        background: linear-gradient(90deg, #ff4d79 0%, #ff6b3d 100%);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn:hover {
+        transform: scale(1.05);
+      }
+
+      .btn span {
+        margin-right: 8px;
+      }
+
+      /* Features Section */
+      .features {
+        padding: 40px 0;
+        background-color: rgba(0, 0, 0, 0.85);
+        position: relative;
+        text-align: center;
+      }
+
+      .features h2 {
+        margin-bottom: 30px;
+        font-size: 1.8rem;
+      }
+
+      .cards-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding: 20px 0;
+      }
+
+      .card {
+        min-width: 160px;
+        max-width: 160px;
+        height: 220px;
+        background-color: #222;
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* USP Section */
+      .usp {
+        padding: 30px 0;
+        text-align: center;
+      }
+
+      .usp h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+      }
+
+      .usp-highlight {
+        color: #ff4d79;
+      }
+
+      .benefits {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin-top: 30px;
+      }
+
+      .benefit {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .circle {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #222;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Testimonials */
+      .testimonials {
+        padding: 50px 0;
+        text-align: center;
+      }
+
+      .testimonials h2 {
+        margin-bottom: 40px;
+        font-size: 1.8rem;
+      }
+
+      .testimonial-container {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 30px;
+      }
+
+      .testimonial {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 30px 20px;
+        max-width: 300px;
+        position: relative;
+        text-align: left;
+      }
+
+      .testimonial::before {
+        content: """;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 60px;
+        color: rgba(255, 255, 255, 0.1);
+        line-height: 1;
+      }
+
+      .testimonial p {
+        margin-bottom: 20px;
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      .testimonial-user {
+        display: flex;
+        align-items: center;
+      }
+
+      .user-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+        overflow: hidden;
+      }
+
+      .user-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .user-info h4 {
+        font-size: 0.9rem;
+        margin-bottom: 3px;
+      }
+
+      .user-info p {
+        font-size: 0.8rem;
+        color: #999;
+        margin: 0;
+      }
+
+      /* CTA Section */
+      .cta {
+        padding: 50px 0;
+        background: linear-gradient(90deg, #ff6b3d 0%, #ff4d79 100%);
+        text-align: center;
+      }
+
+      .cta h2 {
+        margin-bottom: 30px;
+        font-size: 2rem;
+      }
+
+      .cta .btn {
+        background: white;
+        color: #ff4d79;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #111;
+        padding: 40px 0 20px;
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 30px;
+      }
+
+      .footer-logo {
+        margin-bottom: 20px;
+      }
+
+      .footer-info p {
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+        max-width: 300px;
+        color: #ccc;
+        line-height: 1.5;
+      }
+
+      .download-app {
+        text-align: right;
+      }
+
+      .download-app p {
+        margin-bottom: 10px;
+        font-size: 0.9rem;
+      }
+
+      .app-store-btn {
+        display: inline-block;
+        background-color: #222;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 20px;
+        border-top: 1px solid #333;
+        font-size: 0.8rem;
+        color: #888;
+      }
+
+      .footer-nav {
+        display: flex;
+        gap: 20px;
+      }
+
+      .footer-nav a {
+        color: #888;
+        text-decoration: none;
+      }
+
+      .footer-nav a:hover {
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="logo">Lit Vibes</div>
+        <h1>
+          Discover trends that make you <span class="stylish">Stylish</span>
+        </h1>
+        <a href="#" class="btn">
+          <span>Download Now</span>
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M5 12h14"></path>
+            <path d="M12 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+      <div class="container">
+        <h2>Seamless Style in Every Second</h2>
+        <div class="cards-container">
+          <div class="card">
+            <img
+              src="/api/placeholder/160/220"
+              alt="KE 3 CRIME THRILLERS DEKHO"
+            />
+          </div>
+          <div class="card">
+            <img
+              src="/api/placeholder/160/220"
+              alt="MUST TRY TRENDING BLOUSE"
+            />
+          </div>
+          <div class="card">
+            <img
+              src="/api/placeholder/160/220"
+              alt="TOP 3 PRODUCTS FOR CLEAR SKIN"
+            />
+          </div>
+          <div class="card">
+            <img src="/api/placeholder/160/220" alt="MEIN AISE TAYAAR HONA!" />
+          </div>
+          <div class="card">
+            <img
+              src="/api/placeholder/160/220"
+              alt="AUDIO BEST FINDS IN ₹999"
+            />
+          </div>
+        </div>
+        <h3>
+          Effortless Trends, <span class="usp-highlight">No Distractions</span>
+        </h3>
+
+        <div class="benefits">
+          <div class="benefit">
+            <div class="circle">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                stroke-width="2"
+              >
+                <path d="M12 2L1 21h22L12 2z"></path>
+              </svg>
+            </div>
+            <p>No Ads</p>
+          </div>
+
+          <div class="benefit">
+            <div class="circle">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                stroke-width="2"
+              >
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+              </svg>
+            </div>
+            <p>10,000+ Videos in 30+ Categories</p>
+          </div>
+
+          <div class="benefit">
+            <div class="circle">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 6v6l4 2"></path>
+              </svg>
+            </div>
+            <p>New Videos Everyday!</p>
+          </div>
+        </div>
+
+        <a href="#" class="btn" style="margin-top: 30px">
+          <span>Download Now</span>
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M5 12h14"></path>
+            <path d="M12 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+      <div class="container">
+        <h2>User Love</h2>
+        <div class="testimonial-container">
+          <div class="testimonial">
+            <p>
+              Lit Vibes is my go-to platform to catch style tips and trending
+              fashion. The app is super intuitive and actually shows me what
+              works for my body type. I'm literally having a productive style
+              change with this everyday!
+            </p>
+            <div class="testimonial-user">
+              <div class="user-avatar">
+                <img src="/api/placeholder/40/40" alt="User" />
+              </div>
+              <div class="user-info">
+                <h4>Sara Brown</h4>
+                <p>Fashion Enthusiast</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial">
+            <p>
+              Never thought having a trend feed would make such a difference to
+              my style game! The app curates only the best videos that actually
+              match my taste and preferences. I can literally try style cues
+              that fit my routine in just a few minutes.
+            </p>
+            <div class="testimonial-user">
+              <div class="user-avatar">
+                <img src="/api/placeholder/40/40" alt="User" />
+              </div>
+              <div class="user-info">
+                <h4>Jessica Chen</h4>
+                <p>Style Blogger</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial">
+            <p>
+              What I love most of all is how it shows trends in a customized
+              way. Instead of just generic fashion advice, this app actually
+              suggests styles perfectly fitted for my body structure. It's truly
+              inspiring!
+            </p>
+            <div class="testimonial-user">
+              <div class="user-avatar">
+                <img src="/api/placeholder/40/40" alt="User" />
+              </div>
+              <div class="user-info">
+                <h4>Maria Patel</h4>
+                <p>Student</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+      <div class="container">
+        <h2>Join Lit Vibes Now</h2>
+        <a href="#" class="btn">
+          <span>Download Now</span>
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#ff4d79"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M5 12h14"></path>
+            <path d="M12 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-info">
+            <div class="logo footer-logo">Lit Vibes</div>
+            <p>Discover trends that make you stylish in 60 secs</p>
+            <p>
+              3rd And 4th Floor, Building 100A, 14th Main, 17th Cross Road,
+              Sector 3, HSR Layout, Bengaluru, Karnataka 560034
+            </p>
+            <p>PIN: +91 80000 12345</p>
+          </div>
+          <div class="download-app">
+            <p>Download App</p>
+            <a href="#" class="app-store-btn">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                <path d="M2 17l10 5 10-5"></path>
+                <path d="M2 12l10 5 10-5"></path>
+              </svg>
+              <span style="margin-left: 8px">Play Store</span>
+            </a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="footer-nav">
+            <a href="#">About Us</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Cancellation Policy</a>
+          </div>
+          <div>© 2023 Lit Vibes • All Rights Reserved</div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Add any JavaScript functionality here
+      document.addEventListener("DOMContentLoaded", function () {
+        // This could include animations, sliders, etc.
+
+        // Example: Add hover effects to cards
+        const cards = document.querySelectorAll(".card");
+        cards.forEach((card) => {
+          card.addEventListener("mouseenter", function () {
+            this.style.transform = "translateY(-10px)";
+            this.style.transition = "transform 0.3s ease";
+          });
+
+          card.addEventListener("mouseleave", function () {
+            this.style.transform = "translateY(0)";
+          });
+        });
+
+        // Example: Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
+
+            document.querySelector(targetId).scrollIntoView({
+              behavior: "smooth",
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
